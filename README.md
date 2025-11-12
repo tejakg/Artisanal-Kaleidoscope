@@ -1,6 +1,6 @@
 # Artisanal Kaleidoscope Website
 
-A beautiful, production-grade website for Artisanal Kaleidoscope, a Mysuru-based handmade jewelry brand specializing in silk-thread bangles, earrings, and custom artisan pieces.
+A beautiful, production-grade website with full admin panel for Artisanal Kaleidoscope, a Mysuru-based handmade jewelry brand specializing in silk-thread bangles, earrings, and custom artisan pieces.
 
 ## ✨ Features
 
@@ -271,14 +271,33 @@ The site includes:
 - **Desktop**: > 1024px
 - **Large Desktop**: > 1280px
 
-## 🔮 Future Enhancements
+## 🔐 Admin Panel
 
-### Admin Panel
-See `components/admin/README.md` for admin panel roadmap:
-- Product management
-- Portfolio management
-- Tutorial management
-- Order management dashboard
+A complete, production-ready admin panel is included! Manage all your content easily.
+
+### Access
+- **URL**: `/admin/login`
+- **Email**: `admin@artisanalkaleidoscope.com`
+- **Password**: `admin123`
+
+### Features
+- 📦 **Product Management**: Add, edit, delete products with image cropping
+- 📸 **Portfolio Management**: Upload and manage showcase photos
+- 🎥 **Tutorial Management**: Link and organize YouTube videos
+- 🖼️ **Image Cropping**: Built-in crop/preview tool for all uploads
+- 📊 **Dashboard**: Real-time statistics and quick actions
+- 🔒 **Secure Authentication**: JWT-based auth with sessions
+- 📱 **Mobile Responsive**: Full mobile support
+
+### Documentation
+See [ADMIN.md](./ADMIN.md) for complete admin panel documentation including:
+- How to use each feature
+- Security configuration
+- API endpoints
+- Database migration guide
+- Troubleshooting
+
+## 🔮 Additional Features to Consider
 
 ### Recommended Integrations
 - **CMS**: Sanity.io or Contentful for content management
