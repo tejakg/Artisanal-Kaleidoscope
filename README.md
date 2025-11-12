@@ -288,14 +288,21 @@ A complete, production-ready admin panel is included! Manage all your content ea
 - 📊 **Dashboard**: Real-time statistics and quick actions
 - 🔒 **Secure Authentication**: JWT-based auth with sessions
 - 📱 **Mobile Responsive**: Full mobile support
+- 💾 **Supabase Integration**: Free PostgreSQL database and storage
+
+### Database Setup
+The admin panel uses **Supabase** - a free, open-source Firebase alternative with:
+- ✅ **500MB Database** (free tier)
+- ✅ **1GB File Storage** (free tier)
+- ✅ **Unlimited API Requests**
+- ✅ **Real-time Updates**
+- ✅ **Row Level Security**
+
+**Setup in 5 minutes:** See [SUPABASE_SETUP.md](./SUPABASE_SETUP.md) for step-by-step instructions.
 
 ### Documentation
-See [ADMIN.md](./ADMIN.md) for complete admin panel documentation including:
-- How to use each feature
-- Security configuration
-- API endpoints
-- Database migration guide
-- Troubleshooting
+- [ADMIN.md](./ADMIN.md) - Complete admin panel guide
+- [SUPABASE_SETUP.md](./SUPABASE_SETUP.md) - Database setup guide
 
 ## 🔮 Additional Features to Consider
 
