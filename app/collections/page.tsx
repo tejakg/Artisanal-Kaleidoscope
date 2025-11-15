@@ -2,8 +2,9 @@
 
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Package, Sparkles } from 'lucide-react';
+import { Package, Sparkles, Instagram } from 'lucide-react';
 import ProductCard from '@/components/collections/ProductCard';
+import InstagramFeed from '@/components/InstagramFeed';
 import { collections } from '@/data/products';
 
 const CollectionsPage = () => {
@@ -151,6 +152,47 @@ const CollectionsPage = () => {
                 Watch Tutorials
               </a>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Instagram Feed Section */}
+      <section className="section bg-neutral-50">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full mb-4 shadow-sm">
+              <Instagram className="w-4 h-4 text-primary-600" />
+              <span className="text-sm font-medium text-neutral-700">@artisanal_kaleidoscope</span>
+            </div>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-neutral-900 mb-4">
+              See Our Products on <span className="gradient-text">Instagram</span>
+            </h2>
+            <p className="text-xl text-neutral-600 max-w-2xl mx-auto mb-6">
+              Follow us for daily updates, customer reviews, and exclusive behind-the-scenes content
+            </p>
+            <a
+              href="https://instagram.com/artisanal_kaleidoscope"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-medium hover:shadow-lg transition-all duration-300 hover:scale-105"
+            >
+              <Instagram className="w-5 h-5" />
+              Follow Us
+            </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <InstagramFeed limit={6} columns={3} />
           </motion.div>
         </div>
       </section>

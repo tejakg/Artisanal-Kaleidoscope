@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Youtube, Play, Clock, Tag } from 'lucide-react';
 import Card from '@/components/ui/Card';
+import YouTubeFeed from '@/components/YouTubeFeed';
 import { tutorials } from '@/data/products';
 import { getYouTubeVideoId } from '@/lib/utils';
 
@@ -92,87 +93,14 @@ const TutorialsPage = () => {
             </div>
           </motion.div>
 
-          {/* Tutorials Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredTutorials.map((tutorial, index) => (
-              <motion.div
-                key={tutorial.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.05 }}
-              >
-                <Card hover className="h-full flex flex-col group">
-                  {/* Video Thumbnail */}
-                  <div className="relative aspect-video overflow-hidden bg-neutral-900">
-                    {/* YouTube Embed Placeholder */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-neutral-800 to-neutral-900 flex items-center justify-center">
-                      <Play className="w-16 h-16 text-white/50" />
-                    </div>
-
-                    {/* Play Button Overlay */}
-                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition-all duration-300 flex items-center justify-center">
-                      <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform">
-                        <Play className="w-8 h-8 text-primary-600 ml-1" />
-                      </div>
-                    </div>
-
-                    {/* Duration Badge */}
-                    {tutorial.duration && (
-                      <div className="absolute bottom-3 right-3 px-2 py-1 bg-black/80 backdrop-blur-sm rounded text-white text-xs font-medium flex items-center gap-1">
-                        <Clock className="w-3 h-3" />
-                        {tutorial.duration}
-                      </div>
-                    )}
-
-                    {/* Playlist Badge */}
-                    {tutorial.playlist && (
-                      <div className="absolute top-3 left-3 px-3 py-1 bg-primary-600 text-white text-xs font-semibold rounded-full shadow-lg">
-                        {tutorial.playlist}
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-5 flex-1 flex flex-col">
-                    <h3 className="text-xl font-display font-semibold text-neutral-900 mb-2 group-hover:text-primary-600 transition-colors">
-                      {tutorial.title}
-                    </h3>
-
-                    <p className="text-sm text-neutral-600 mb-4 line-clamp-3 flex-1">
-                      {tutorial.description}
-                    </p>
-
-                    {/* Tags */}
-                    {tutorial.tags && tutorial.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {tutorial.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="inline-flex items-center gap-1 px-2 py-1 bg-neutral-100 text-neutral-700 rounded-full text-xs"
-                          >
-                            <Tag className="w-3 h-3" />
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-
-                    {/* Watch Button */}
-                    <a
-                      href={tutorial.youtubeUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium transition-colors group"
-                    >
-                      <Youtube className="w-4 h-4 mr-2" />
-                      Watch on YouTube
-                    </a>
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
+          {/* YouTube Feed */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <YouTubeFeed channelId="artisanal_kaleidoscope" limit={12} />
+          </motion.div>
 
           {/* Empty State */}
           {filteredTutorials.length === 0 && (
@@ -206,7 +134,7 @@ const TutorialsPage = () => {
               and exclusive tips for creating beautiful silk-thread jewelry.
             </p>
             <a
-              href={process.env.NEXT_PUBLIC_YOUTUBE_URL || 'https://youtube.com'}
+              href="https://youtube.com/@artisanal_kaleidoscope"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary-600 rounded-lg font-medium hover:bg-neutral-50 transition-colors shadow-xl text-lg"

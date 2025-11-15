@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Camera, X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
+import { Camera, X, ChevronLeft, ChevronRight, Maximize2, Instagram } from 'lucide-react';
 import Modal from '@/components/ui/Modal';
+import InstagramFeed from '@/components/InstagramFeed';
 import { portfolioItems } from '@/data/products';
 import { ProductCategory } from '@/types';
 
@@ -161,6 +162,47 @@ const PortfolioPage = () => {
               <p className="text-xl text-neutral-600">No items found in this category.</p>
             </motion.div>
           )}
+        </div>
+      </section>
+
+      {/* Instagram Feed Section */}
+      <section className="section bg-white">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-warm rounded-full mb-4">
+              <Instagram className="w-4 h-4 text-primary-600" />
+              <span className="text-sm font-medium text-neutral-700">Follow Us</span>
+            </div>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-neutral-900 mb-4">
+              See More on <span className="gradient-text">Instagram</span>
+            </h2>
+            <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
+              Follow @artisanal_kaleidoscope for daily updates, behind-the-scenes content, and exclusive designs
+            </p>
+            <a
+              href="https://instagram.com/artisanal_kaleidoscope"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 mt-6 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-medium hover:shadow-lg transition-all duration-300 hover:scale-105"
+            >
+              <Instagram className="w-5 h-5" />
+              Follow on Instagram
+            </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <InstagramFeed limit={9} columns={3} />
+          </motion.div>
         </div>
       </section>
 

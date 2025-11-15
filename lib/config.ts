@@ -7,9 +7,9 @@ export const siteConfig: SiteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://artisanalkaleidoscope.com',
   ogImage: '/images/og-image.jpg',
   links: {
-    instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || 'https://instagram.com/artisanalkaleidoscope',
+    instagram: process.env.NEXT_PUBLIC_INSTAGRAM_URL || 'https://instagram.com/artisanal_kaleidoscope',
     whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210',
-    youtube: process.env.NEXT_PUBLIC_YOUTUBE_URL || 'https://youtube.com/@artisanalkaleidoscope',
+    youtube: process.env.NEXT_PUBLIC_YOUTUBE_URL || 'https://youtube.com/@artisanal_kaleidoscope',
     email: process.env.NEXT_PUBLIC_EMAIL || 'hello@artisanalkaleidoscope.com',
   },
   contact: {

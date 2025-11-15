@@ -1,4 +1,5 @@
 import { supabaseAdmin } from './client';
+import type { Database } from './types';
 import type { Product, PortfolioItem, Tutorial } from '@/types';
 
 /**
@@ -48,7 +49,7 @@ export const productsDB = {
   async update(id: string, updates: Partial<Product>): Promise<Product | null> {
     const dbUpdates = transformProductToDB(updates);
 
-    const { data, error } = await supabaseAdmin()
+    const { data, error } = await (supabaseAdmin() as any)
       .from('products')
       .update(dbUpdates)
       .eq('id', id)
@@ -126,7 +127,7 @@ export const portfolioDB = {
   async update(id: string, updates: Partial<PortfolioItem>): Promise<PortfolioItem | null> {
     const dbUpdates = transformPortfolioToDB(updates);
 
-    const { data, error } = await supabaseAdmin()
+    const { data, error } = await (supabaseAdmin() as any)
       .from('portfolio')
       .update(dbUpdates)
       .eq('id', id)
@@ -204,7 +205,7 @@ export const tutorialsDB = {
   async update(id: string, updates: Partial<Tutorial>): Promise<Tutorial | null> {
     const dbUpdates = transformTutorialToDB(updates);
 
-    const { data, error } = await supabaseAdmin()
+    const { data, error } = await (supabaseAdmin() as any)
       .from('tutorials')
       .update(dbUpdates)
       .eq('id', id)
@@ -259,21 +260,25 @@ function transformProductFromDB(dbProduct: any): Product {
 }
 
 function transformProductToDB(product: any): any {
-  return {
-    name: product.name,
-    category: product.category,
-    description: product.description,
-    price: product.price || null,
-    price_min: product.priceRange?.min || null,
-    price_max: product.priceRange?.max || null,
-    images: product.images || [],
-    materials: product.materials || [],
-    craftsmanship: product.craftsmanship,
-    customizable: product.customizable !== undefined ? product.customizable : true,
-    is_featured: product.isFeatured || false,
-    is_best_seller: product.isBestSeller || false,
-    tags: product.tags || null,
-  };
+  const result: any = {};
+
+  if (product.name !== undefined) result.name = product.name;
+  if (product.category !== undefined) result.category = product.category;
+  if (product.description !== undefined) result.description = product.description;
+  if (product.price !== undefined) result.price = product.price || null;
+  if (product.priceRange !== undefined) {
+    result.price_min = product.priceRange?.min || null;
+    result.price_max = product.priceRange?.max || null;
+  }
+  if (product.images !== undefined) result.images = product.images || [];
+  if (product.materials !== undefined) result.materials = product.materials || [];
+  if (product.craftsmanship !== undefined) result.craftsmanship = product.craftsmanship;
+  if (product.customizable !== undefined) result.customizable = product.customizable;
+  if (product.isFeatured !== undefined) result.is_featured = product.isFeatured;
+  if (product.isBestSeller !== undefined) result.is_best_seller = product.isBestSeller;
+  if (product.tags !== undefined) result.tags = product.tags || null;
+
+  return result;
 }
 
 function transformPortfolioFromDB(dbItem: any): PortfolioItem {
